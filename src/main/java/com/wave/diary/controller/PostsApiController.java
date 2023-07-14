@@ -1,12 +1,11 @@
-package com.wave.diary.controller;
 @RequiredArgsConstructor
-@Service
-public class PostsService {
+@RestController
+public class PostsApiController {
 
-    private final PostsRepository postsRepository;
+    private final PostsService postsService;
 
-    @Transactional
-    public Long save(PostsSaveRequestDto requestDto) {
-        return postsRepository.save(requestDto.toEntity()).getId();
+    @PostMapping("/api/v1/posts")
+    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+        return postsService.save(requestDto);
     }
 }

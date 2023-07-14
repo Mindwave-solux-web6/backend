@@ -1,3 +1,4 @@
+package com.wave.diary.dto;
 Getter
 @NoArgsConstructor
 public class PostsSaveRequestDto {

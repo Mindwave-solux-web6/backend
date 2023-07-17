@@ -1,65 +1,56 @@
 package com.wave.member.config;
 
-import com.wave.member.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import com.wave.member.jwt.JwtAuthenticationFilter;
+import com.wave.member.jwt.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @EnableWebSecurity
-//스프링 시큐리티: 스프링 기반의 애플리케이션 보안(인증, 권한 인가 등)을 담당하는 스프링 하위 프레임워크
 public class SecurityConfig {
 
-    @Autowired
-    MemberService memberService;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    //http 요청에 대한 보안 설정
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.formLogin()
-                .loginPage("/members/login")  //로그인 페이지 url 을 설정한다
-                .defaultSuccessUrl("/")       //로그인 성공 시 이동할 url 을 설정한다
-                .usernameParameter("email")   //로그인 시 사용할 파라미터 이름으로 email 을 지정한다
-                .failureUrl("/members/login/error") //로그인 실패 시 이동한 url 을 설정한다
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))  //로그아웃 url 을 설정한다
-                .logoutSuccessUrl("/")      //로그아웃 성공 시 이동할 url 을 설정한다.
-                .invalidateHttpSession(true); //로그아웃 시 세션정보를 제거
-        return http.build();
-    }
-
-
-    //db에 비밀번호가 암호화되어 저장된다
+    // 비밀번호 암호화
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-
-    //Spring Security 에서 인증은 AuthenticationManager 를 통해 이루어진다.
+    // authenticationManager를 Bean 등록
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+        
 
-
-    // Security 무시하기
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-                .requestMatchers(PathRequest.toH2Console())
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-    }
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .httpBasic().disable() // rest api 만을 고려하여 기본설정 해제
+            .csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 토큰 기반 인증이므로 세션 사용 안함
+            .and()
+            .authorizeRequests() // 요청에 대한 사용 권한 체크
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/api/post/**").authenticated()
+            .anyRequest().permitAll() // 그외 나머지 요청은 누구나 접근 가능
+            .and()
+            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+            // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 전에 넣음
 
+        
+        return http.build();
+    }
+    
 }

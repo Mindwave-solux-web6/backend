@@ -37,10 +37,12 @@ dependencies {
     testImplementation("org.junit.vintage:junit-vintage-engine") {
         exclude group: "org.hamcrest", module: "hamcrest-core"
     }
+
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
 
-ext["h2.version"] = "1.4.199"
+ext["h2.version"] = "2.1.214"

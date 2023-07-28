@@ -1,24 +1,9 @@
-.c-grid{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
-.m-grid{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  margin: 100px;
-}
-
-
 .react-calendar {
   border: 1px solid #ccc;
   width: 630px;
   font-family: "Gowun Batang", serif;
   line-height: 1em;
   background-color: rgba(255, 255, 255, 0.45);
-  margin-top: -3%;
   font-size: 1.3em;
   padding-bottom: 0.7em;
   border-radius: 17px;
@@ -170,34 +155,6 @@ background-color: #e6e6e6;
 }
 /*여기까지 달력*/
 
-/*
-.left-sidebar {
-  width: 200px; 
-  height: 100vh; 
-  background-color: #333;
-  color: #fff; 
-  flex-shrink: 0;
-}
-
-.left-area{
-  font-size: calc(10px + 2vmin);
-}
-
-.sidebar-menu {
-  list-style: none; 
-  padding: 0;
-}
-
-.sidebar-menu li {
-  padding: 12px;
-  cursor: pointer;
-}
-
-.sidebar-menu li.active {
-  background-color: #555;
-}
-*/
-
 .input {
   padding: 10px 15px;
   border: 1px solid #ccc;
@@ -287,4 +244,58 @@ background-color: #e6e6e6;
   margin-bottom:0.6rem;
   border-radius:20px;
   width:80%;
+}
+
+/*마이페이지*/
+.testresult{
+  text-align: center;
+  background-color: black;
+  opacity: 0.6;
+  color: white;
+  font-size:20px;
+  border-radius:20px;
+  padding: 40px;
+}
+
+.testresultcontent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divide{
+  padding: 0 20px 0 20px;
+}
+
+.diary-calendar{
+  display: flex;
+  margin: 10px;
+}
+
+.diarys{
+  margin-left: 10px;
+}
+
+.date{
+  color: black;
+  background-color: rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center; /* 텍스트 가운데 정렬 (수평 방향) */
+  
+  border-radius: 17px;
+  font-size: 20px;
+  width: 300px;
+}
+
+.selecteddatediary{
+  color: black;
+  background-color: rgba(255, 255, 255, 0.45);
+  font-size: 20px;
+  padding: 10px;
+
+  border-radius: 20px; /* You can adjust this value to control the roundness */
+  width:100%;
+  height: 300px;
+  resize: none;
 }

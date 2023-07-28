@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcfbd4e1-4b58-4fe3-8e30-7c4cf5f16592" name="Changes" comment="add 프런트엔드" />
+    <list default="true" id="bcfbd4e1-4b58-4fe3-8e30-7c4cf5f16592" name="Changes" comment="add 프런트엔드">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690528939870</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add 프런트엔드">
+      <option name="closed" value="true" />
+      <created>1690529270417</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690529270417</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,7 +325,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="jisu" />
+                        <option value="origin/jewoo" />
                       </list>
                     </value>
                   </entry>

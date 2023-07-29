@@ -1,27 +1,25 @@
-package com.wave.diary.domain;
+package com.wave.letter.domain;
 
 import com.wave.BaseTimeEntity;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Table(name = "letter")
 @Entity
-@Table(name = "board")
-@NoArgsConstructor
-public class BoardEntity extends BaseTimeEntity {
+public class LetterEntity extends BaseTimeEntity {
 
     @Id
-    @Column(name = "board_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, nullable = false)
-    private String title;
-
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(nullable = false, length = 1000)
     private String content;
 
     @Column(name = "created_date")
@@ -33,10 +31,8 @@ public class BoardEntity extends BaseTimeEntity {
     }
 
     @Builder
-    public BoardEntity(Long id, String title, String content) {
+    public LetterEntity(Long id, String content) {
         this.id = id;
-        this.title = title;
         this.content = content;
     }
-
 }

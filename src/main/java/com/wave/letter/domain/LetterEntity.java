@@ -36,3 +36,4 @@ public class LetterEntity extends BaseTimeEntity {
         this.content = content;
     }
 }
+

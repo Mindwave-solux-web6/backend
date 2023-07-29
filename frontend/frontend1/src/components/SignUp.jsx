@@ -1,11 +1,54 @@
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+
+
+// const SignUp = () => {
+//   const [password, setPassword] = useState("");
+//   const [confirmPassword, setConfirmPassword] = useState("");
+//   const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+//   const handlePasswordChange = (event) => {
+//     setPassword(event.target.value);
+//   };
+
+//   const handleConfirmPasswordChange = (event) => {
+//     setConfirmPassword(event.target.value);
+//   };
+
+//   const handlePasswordFormSubmit = (event) => {
+//     event.preventDefault(); //추가
+//     // 비밀번호와 비밀번호 확인이 일치하는지 확인합니다.
+//     const passwordsMatch = password === confirmPassword;
+
+//     setPasswordsMatch(passwordsMatch);
+//     if (passwordsMatch == true) {
+//       event.target.submit();
+//     } else {
+//       event.preventDefault();
+//     }
+//   };
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleNicknameChange = (event) => {
+    setNickname(event.target.value);
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -15,19 +58,29 @@ const SignUp = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const handlePasswordFormSubmit = (event) => {
-    event.preventDefault(); //추가
-    // 비밀번호와 비밀번호 확인이 일치하는지 확인합니다.
-    const passwordsMatch = password === confirmPassword;
+  const submitSignUp = async (event) => {
+    event.preventDefault();
 
+    const passwordsMatch = password === confirmPassword;
     setPasswordsMatch(passwordsMatch);
-    if (passwordsMatch == true) {
-      event.target.submit();
-    } else {
-      event.preventDefault();
+
+    if (passwordsMatch) {
+      await fetch("http://localhost:8080/api/members/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          name: name,
+          nickname: nickname,
+        }),
+      });
+
+      // Redirect to the desired route or provide appropriate feedback after successful submission
     }
   };
-
   return (
     <header className="masthead">
       <section id="signup" className="mt-7">
@@ -37,8 +90,8 @@ const SignUp = () => {
 
         <div className="row gx-4 gx-lg-5 justify-content-center mb-5">
           <div className="col-lg-4">
-            <form id="signup" onSubmit={handlePasswordFormSubmit}>
-              {/* NAME input */}
+            <form id="signup" onSubmit={submitSignUp}>
+              {/* ID input */}
               <div className="form-floating mb-3">
                 <input
                   className="form-control"
@@ -48,18 +101,12 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="name">Full name</label>
-              </div>
-
-              {/* NICKNAME input */}
-              <div className="form-floating mb-3">
-                <input
-                  className="form-control"
-                  id="nickname"
-                  type="text"
-                  placeholder="Enter your nickname..."
-                  required
-                />
-                <label htmlFor="nickname">Nickname</label>
+                <div
+                  className="invalid-feedback"
+                  data-sb-feedback="name:required"
+                >
+                  A name is required.
+                </div>
               </div>
 
               {/* EMAIL input */}
@@ -86,6 +133,24 @@ const SignUp = () => {
                 </div>
               </div>
 
+              {/* ID input */}
+              <div className="form-floating mb-3">
+                <input
+                  className="form-control"
+                  id="id"
+                  type="text"
+                  placeholder="Enter your ID..."
+                  required
+                />
+                <label htmlFor="id">ID</label>
+                <div
+                  className="invalid-feedback"
+                  data-sb-feedback="id:required"
+                >
+                  An ID is required.
+                </div>
+              </div>
+
               {/* PASSWORD input */}
               <div className="form-floating mb-3">
                 <input
@@ -98,6 +163,12 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="password">Password</label>
+                <div
+                  className="invalid-feedback"
+                  data-sb-feedback="password:required"
+                >
+                  A password is required.
+                </div>
               </div>
 
               {/* PASSWORD CONFIRM input */}
@@ -112,6 +183,12 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="confirmPassword">Password Check</label>
+                <div
+                  className="invalid-feedback"
+                  data-sb-feedback="confirmPassword:required"
+                >
+                  A password is required.
+                </div>
               </div>
 
               {!passwordsMatch && (

@@ -45,7 +45,7 @@ const SignIn = () => {
 
         <div className="row gx-4 gx-lg-5 justify-content-center mb-5 mt-2">
           <div className="col-lg-4">
-            <form id="login" style={{ width: "70%", marginLeft:"15%"}}>
+            <form id="login" style={{ width: "70%", marginLeft: "15%" }}>
               {/* Email input */}
               <div className="form-floating mb-3">
                 <input

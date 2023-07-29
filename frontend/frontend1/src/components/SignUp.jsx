@@ -1,7 +1,6 @@
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 
-
 // const SignUp = () => {
 //   const [password, setPassword] = useState("");
 //   const [confirmPassword, setConfirmPassword] = useState("");
@@ -65,24 +64,49 @@ const SignUp = () => {
     const passwordsMatch = password === confirmPassword;
     setPasswordsMatch(passwordsMatch);
 
-    if (passwordsMatch) {
-      await fetch("http://127.0.0.1/api/members/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          name: name,
-          nickname: nickname,
-        }),
-      });
+      if (passwordsMatch) {
+        try {
+          const response = await axios.post(
+            "http://127.0.0.1/api/members/signup",
+            {
+              email: email,
+              password: password,
+              name: name,
+              nickname: nickname,
+            },
+            {
+              withCredentials: true, // CORS 에러 해결을 위해 withCredentials를 설정합니다.
+            }
+          );
 
-    }
+          // 서버에서 온 응답 처리
+          console.log("회원가입 성공!", response.data);
+          // 여기서 성공 시의 처리를 추가하거나, 다른 페이지로 이동시킬 수 있습니다.
+        } catch (error) {
+          console.error("회원가입 실패!", error.response.data);
+          // 여기서 에러 시의 처리를 추가하거나, 에러 메시지를 보여줄 수 있습니다.
+        }
+      }
+    // if (passwordsMatch) {
+    //   await fetch("http://127.0.0.1:8080/api/members/signup", {
+    //     method: "POST",
+    //     mode:"cors",
+    //     credentials: "include",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //     body: JSON.stringify({
+    //       email: email,
+    //       password: password,
+    //       name: name,
+    //       nickname: nickname,
+    //     }),
+    //   });
+    // }
   };
   return (
-<header className="masthead">
+    <header className="masthead">
       <section id="signup" className="mt-7">
         <hr className="sign-divider-light" />
         <h2 className="text-center mt-0 text-white">Sign Up</h2>

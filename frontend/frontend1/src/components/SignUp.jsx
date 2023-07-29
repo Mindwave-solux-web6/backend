@@ -65,7 +65,7 @@ const SignUp = () => {
     setPasswordsMatch(passwordsMatch);
 
     if (passwordsMatch) {
-      await fetch("http://localhost:8080/api/members/signup", {
+      await fetch("http://127.0.0.1:8080/api/members/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

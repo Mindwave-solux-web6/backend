@@ -1,0 +1,190 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn;
+  animation-duration: 0.5s;
+}
+
+.fadeOut {
+  animation: fadeOut;
+  animation-duration: 0.5s;
+}
+body {
+  background-color: white;
+}
+
+#main {
+  background-color: whitesmoke;
+  width: 80%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+p {
+  font-size: 20px;
+  color: white;
+}
+
+hr {
+  height: 1px;
+  max-width: 35rem;
+  margin: 1.5rem auto;
+  background-color: white;
+  border: none;
+  opacity: 1;
+}
+
+#qna {
+  display: none;
+}
+
+.mbutton {
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
+}
+
+.qBox {
+  /* background-color: whitesmoke; */
+  color : white;
+  background-color: rgba( 0, 0, 0, 0.35 );
+  border-radius: 20px;
+  font-size: 24px;
+  width: 100%;
+  height: 100%;
+}
+
+.alt {
+  /* background-color: whitesmoke; */
+  color : white;
+  background-color: rgba( 0, 0, 0, 0.35 );
+  border-radius: 20px;
+  font-size: 24px;
+  width: 60%;
+  height: 100%;
+}
+
+.answerList {
+  background-color: gray;
+  color: white;
+  /* display: inline-block ; 가로로 나열하기 위해 수정함 */
+  width: 80px; /* 버튼의 너비를 설정함 (원하는 크기로 조절) */
+  height: 80px; /* 버튼의 높이를 설정함 (원하는 크기로 조절) */
+  border: 0px;
+  border-radius: 50%;
+  font-size: 27px;
+}
+
+.answerList:hover,
+.answerList:focus {
+  background-color: #fffeee ;
+  color: black;
+  margin: 20%;
+}
+
+.status {
+  height: 20px;
+  width: 50%;
+  background-color: #BDBDBD;
+  border-radius: 20px;
+}
+
+.statusBar {
+  height: 100%;
+  border-radius: 50px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#BDBDBD+0,fe9090+52,ff5c5c+100;Red+3D+%231 */
+  background: #BDBDBD;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #BDBDBD 0%, #636363 52%, #2D2D2D 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #BDBDBD 0%,
+    #636363 52%,
+    #2D2D2D 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #BDBDBD 0%, #636363 52%, #2D2D2D 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#BDBDBD', endColorstr='#2D2D2D', GradientType=0);
+  /* IE6-9 */
+}
+
+#result {
+  display: none;
+  background-color: rgba( 0, 0, 0, 0.35 );
+  color: white;
+  width: 80%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.resultName {
+  font-size: 26px;
+  color: white;
+}
+
+.resultDesc {
+  font-size: 20px;
+  color: white;
+}
+
+.fw-boldline {
+  font-weight: 700 !important;
+  text-decoration: underline;
+}
+
+.fw-boldline2 {
+  font-weight: 700 !important;
+}
+
+.fw-boldline3 {
+  text-decoration: underline;
+}
+
+.kakao {
+  color: white;
+  background-color: #fee500;
+  font-size: 20px;
+  border: 0px;
+  border-radius: 20px;
+}
+
+.kakao:hover,
+.kakao:focus {
+  background-color: whitesmoke;
+  color: #fee500;
+}

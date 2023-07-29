@@ -29,6 +29,7 @@
 //   };
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -65,7 +66,7 @@ const SignUp = () => {
     setPasswordsMatch(passwordsMatch);
 
     if (passwordsMatch) {
-      await fetch("http://localhost:8080/api/members/signup", {
+      await fetch("http://127.0.0.1/api/members/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

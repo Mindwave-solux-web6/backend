@@ -16,3 +16,6 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+server:
+  address: 0.0.0.0

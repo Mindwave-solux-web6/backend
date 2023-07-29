@@ -15,17 +15,16 @@ function MyPage(){
     return(
         <>
         <header className="masthead" style={{ height: "60%" }}>
-            <hr class="sign-divider-light mt-7"/>
-            <h2 class="text-center mt-0 text-white">마이페이지</h2>
-            <hr class="sign-divider-light"/>
-            <div class="container">
-            <input class="search"></input>
-                <div class="mypagecontent">
-                    <div class="testresult">
+            <hr className="sign-divider-light mt-7"/>
+            <h2 className="text-center mt-0 text-white">마이페이지</h2>
+            <hr className="sign-divider-light"/>
+            <div className="container">
+                <div className="mypagecontent">
+                    <div className="testresult">
                         <h2>지금 당신이 걸려있는 덫은?</h2>
                         <br/>
-                        <div class="testresultcontent">
-                                <div class="divide">
+                        <div className="testresultcontent">
+                                <div className="divide">
                                     버림받음의 덫<br/>
                                     <hr className="sign-desc-light" />
                                     <p>
@@ -36,7 +35,7 @@ function MyPage(){
                                         의미합니다.
                                     </p>
                                 </div>
-                                <div class="divide">
+                                <div className="divide">
                                     버림받음의 덫<br/>
                                     <hr className="sign-desc-light" />
                                     <p>
@@ -47,7 +46,7 @@ function MyPage(){
                                         의미합니다.
                                     </p>
                                 </div>
-                                <div class="divide">
+                                <div className="divide">
                                     버림받음의 덫<br/>
                                     <hr className="sign-desc-light" />
                                     <p>
@@ -63,9 +62,9 @@ function MyPage(){
 
                     {/* 캘린더 선택 */}
                     <div>
-                        <hr class="sign-divider-light mt-7"/>
-                        <h2 class="text-center mt-0 text-white">다시 보고 싶은 날짜</h2>
-                        <hr class="sign-divider-light"/>
+                        <hr className="sign-divider-light mt-7"/>
+                        <h2 className="text-center mt-0 text-white">다시 보고 싶은 날짜</h2>
+                        <hr className="sign-divider-light"/>
 
                         <div className="my-5 mcontainercontent d-flex align-items-center justify-content-center ">
                         <Calendar
@@ -84,9 +83,9 @@ function MyPage(){
                             <div className="showcontent mb-2">일기 제목이 표시됩니다.</div>
                             <div className="showcontent">일기 내용이 표시됩니다.</div>
                             <div className='b3'>
-                                <button className='btn btn-secondary btn-xl m-2'>수정</button>
-                                <button className='btn btn-primary btn-xl m-2'>저장</button>
-                                <button className='btn btn-danger btn-xl m-2'>삭제</button>
+                                <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>
+                                <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
                         </div>
 
@@ -95,16 +94,10 @@ function MyPage(){
                             <div className="date">{selectedDate.toDateString()}</div>
                             <div className="showcontent">성찰 / 편지 내용이 표시됩니다.</div>
                             <div className='b3'>
-                                <button className='btn btn-secondary btn-xl m-2'>수정</button>
-                                <button className='btn btn-primary btn-xl m-2'>저장</button>
-                                <button className='btn btn-danger btn-xl m-2'>삭제</button>
+                                <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>
+                                <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
-                            <div className="selecteddate letter">
-                                이것은 성찰이다 그날의 일기에 대한
-                            </div>
-                            <br></br>
-                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px"}}>수정</button>
-                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px" }}>삭제</button>
                         </div>
                     </div>
                 </div>

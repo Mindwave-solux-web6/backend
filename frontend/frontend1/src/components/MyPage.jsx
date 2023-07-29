@@ -19,6 +19,7 @@ function MyPage(){
             <h2 class="text-center mt-0 text-white">마이페이지</h2>
             <hr class="sign-divider-light"/>
             <div class="container">
+            <input class="search"></input>
                 <div class="mypagecontent">
                     <div class="testresult">
                         <h2>지금 당신이 걸려있는 덫은?</h2>
@@ -98,6 +99,12 @@ function MyPage(){
                                 <button className='btn btn-primary btn-xl m-2'>저장</button>
                                 <button className='btn btn-danger btn-xl m-2'>삭제</button>
                             </div>
+                            <div className="selecteddate letter">
+                                이것은 성찰이다 그날의 일기에 대한
+                            </div>
+                            <br></br>
+                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px"}}>수정</button>
+                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px" }}>삭제</button>
                         </div>
                     </div>
                 </div>

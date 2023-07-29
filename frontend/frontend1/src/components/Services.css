@@ -247,6 +247,11 @@ background-color: #e6e6e6;
 }
 
 /*마이페이지*/
+.search{
+  margin: 0 0 20px 40px;
+  border-radius:20px;
+}
+
 .testresult{
   text-align: center;
   background-color: black;
@@ -268,7 +273,7 @@ background-color: #e6e6e6;
 }
 
 .diary-calendar{
-  display: flex;
+
   margin: 10px;
 }
 
@@ -282,13 +287,14 @@ background-color: #e6e6e6;
   border-radius: 20px;
   font-weight: bold;
   text-align: center; /* 텍스트 가운데 정렬 (수평 방향) */
-  
+
+  margin-top: 20px;
   border-radius: 17px;
   font-size: 20px;
   width: 300px;
 }
 
-.selecteddatediary{
+.selecteddate{
   color: black;
   background-color: rgba(255, 255, 255, 0.45);
   font-size: 20px;

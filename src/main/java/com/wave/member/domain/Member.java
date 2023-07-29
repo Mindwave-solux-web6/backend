@@ -9,14 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import com.wave.BaseTimeEntity;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Member extends BaseTimeEntity {
 
@@ -39,8 +37,7 @@ public class Member extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public Member(Long id, String name, String email, String password, String nickname, Role role) {
-        this.id = id;
+    public Member(String name, String email, String password, String nickname, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;

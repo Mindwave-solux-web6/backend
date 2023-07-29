@@ -38,7 +38,7 @@ const SignUp = () => {
         <div className="row gx-4 gx-lg-5 justify-content-center mb-5">
           <div className="col-lg-4">
             <form id="signup" onSubmit={handlePasswordFormSubmit}>
-              {/* ID input */}
+              {/* NAME input */}
               <div className="form-floating mb-3">
                 <input
                   className="form-control"
@@ -48,12 +48,18 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="name">Full name</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="name:required"
-                >
-                  A name is required.
-                </div>
+              </div>
+
+              {/* NICKNAME input */}
+              <div className="form-floating mb-3">
+                <input
+                  className="form-control"
+                  id="nickname"
+                  type="text"
+                  placeholder="Enter your nickname..."
+                  required
+                />
+                <label htmlFor="nickname">Nickname</label>
               </div>
 
               {/* EMAIL input */}
@@ -80,24 +86,6 @@ const SignUp = () => {
                 </div>
               </div>
 
-              {/* ID input */}
-              <div className="form-floating mb-3">
-                <input
-                  className="form-control"
-                  id="id"
-                  type="text"
-                  placeholder="Enter your ID..."
-                  required
-                />
-                <label htmlFor="id">ID</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="id:required"
-                >
-                  An ID is required.
-                </div>
-              </div>
-
               {/* PASSWORD input */}
               <div className="form-floating mb-3">
                 <input
@@ -110,12 +98,6 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="password">Password</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="password:required"
-                >
-                  A password is required.
-                </div>
               </div>
 
               {/* PASSWORD CONFIRM input */}
@@ -130,12 +112,6 @@ const SignUp = () => {
                   required
                 />
                 <label htmlFor="confirmPassword">Password Check</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="confirmPassword:required"
-                >
-                  A password is required.
-                </div>
               </div>
 
               {!passwordsMatch && (

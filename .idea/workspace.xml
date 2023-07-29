@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcfbd4e1-4b58-4fe3-8e30-7c4cf5f16592" name="Changes" comment="add 프런트엔드">
+    <list default="true" id="bcfbd4e1-4b58-4fe3-8e30-7c4cf5f16592" name="Changes" comment="편지">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/DiaryAndLetterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/controller/LetterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/domain/LetterEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/dto/LetterDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/repository/LetterRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/service/LetterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend1/src/components/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/src/components/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/BaseTimeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/BaseTimeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/domain/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/domain/BoardEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/dto/BoardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/dto/BoardDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/repository/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/service/BoardService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690529270417</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add 프런트엔드">
+      <option name="closed" value="true" />
+      <created>1690530659070</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1690530659070</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -325,7 +352,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/jewoo" />
+                        <option value="jewoo" />
                       </list>
                     </value>
                   </entry>
@@ -341,6 +368,7 @@
     <MESSAGE value="회원가입 및 로그인" />
     <MESSAGE value="다이어리" />
     <MESSAGE value="add 프런트엔드" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 프런트엔드" />
+    <MESSAGE value="편지" />
+    <option name="LAST_COMMIT_MESSAGE" value="편지" />
   </component>
 </project>

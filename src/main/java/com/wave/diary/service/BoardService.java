@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +32,7 @@ public class BoardService {
         List<BoardDto> boardDtoList = new ArrayList<>();
 
         for (BoardEntity boardEntity : boardEntities) {
-            boardDtoList.add(this.convertEntityToDto(boardEntity));
+            boardDtoList.add(this.convertToDto(boardEntity));
         }
 
         return boardDtoList;
@@ -46,12 +48,17 @@ public class BoardService {
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
         BoardEntity boardEntity = boardEntityWrapper.get();
 
-        return this.convertEntityToDto(boardEntity);
+        return this.convertToDto(boardEntity);
     }
 
     @Transactional
     public Long savePost(BoardDto boardDto) {
-        return boardRepository.save(boardDto.toEntity()).getId();
+        BoardEntity boardEntity = BoardEntity.builder()
+                .title(boardDto.getTitle())
+                .content(boardDto.getContent())
+                .build();
+
+        return boardRepository.save(boardEntity).getId();
     }
 
     @Transactional
@@ -67,10 +74,14 @@ public class BoardService {
         if (boardEntities.isEmpty()) return boardDtoList;
 
         for (BoardEntity boardEntity : boardEntities) {
-            boardDtoList.add(this.convertEntityToDto(boardEntity));
+            boardDtoList.add(this.convertToDto(boardEntity));
         }
 
         return boardDtoList;
+    }
+
+    public BoardEntity getBoardByDate(LocalDate selectedDate) {
+        return boardRepository.findByCreatedDate(selectedDate);
     }
 
     public Integer[] getPageList(Integer curPageNum) {
@@ -98,13 +109,11 @@ public class BoardService {
         return pageList;
     }
 
-    private BoardDto convertEntityToDto(BoardEntity boardEntity) {
+    public BoardDto convertToDto(BoardEntity boardEntity) {
         return BoardDto.builder()
                 .id(boardEntity.getId())
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
-                .writer(boardEntity.getWriter())
-                .createdDate(boardEntity.getCreatedDate())
                 .build();
     }
 }

@@ -14,7 +14,7 @@ public class BoardController {
     private BoardService boardService;
 
 
-    /* 일기 쓰기 */
+    /* 일기 작성 */
     @PostMapping("/post")
     public Long savePost(@RequestBody BoardDto boardDto) {
         return boardService.savePost(boardDto);
@@ -54,5 +54,4 @@ public class BoardController {
     public void deletePost(@PathVariable("id") Long id) {
         boardService.deletePost(id);
     }
-
 }

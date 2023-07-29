@@ -17,6 +17,7 @@ function MyPage(){
             <h2 class="text-center mt-0 text-white text-center">마이페이지</h2>
             <hr class="sign-divider-light"/>
             <div class="container">
+            <input class="search"></input>
                 <div class="mypagecontent">
                     <div class="testresult">
                         <h2>지금 당신이 걸려있는 덫은?</h2>
@@ -68,10 +69,19 @@ function MyPage(){
                         </div>
                         <div className="diarys">
                             <div  className="date">{selectedDate.toDateString()}</div>
-                            <div className="selecteddatediary">
+                            <div className="selecteddate title">
+                                이것은 제목이다 그날의 일기에 대한
+                            </div>
+                            <div className="selecteddate diary">
                                 이것은 내용이다 그날의 일기에 대한 ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ<br/>
                                 없다 오늘의 일기는 
                             </div>
+                            <div className="selecteddate letter">
+                                이것은 성찰이다 그날의 일기에 대한
+                            </div>
+                            <br></br>
+                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px"}}>수정</button>
+                            <button className="btn btn-primary btn-xl" style={{ width: "50%", height: "60px" }}>삭제</button>
                         </div>
                     </div>
                 </div>

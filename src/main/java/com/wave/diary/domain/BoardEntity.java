@@ -4,12 +4,13 @@ import com.wave.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
 @Table(name = "board")
+@NoArgsConstructor
 public class BoardEntity extends BaseTimeEntity {
 
     @Id
@@ -17,19 +18,23 @@ public class BoardEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10, nullable = false)
-    private String writer;
-
     @Column(length = 100, nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column(name = "created_date")
+    private LocalDate createdDate;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdDate = LocalDate.now();
+    }
+
     @Builder
-    public BoardEntity(Long id, String title, String content, String writer) {
+    public BoardEntity(Long id, String title, String content) {
         this.id = id;
-        this.writer = writer;
         this.title = title;
         this.content = content;
     }

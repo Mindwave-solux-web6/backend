@@ -1,7 +1,50 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
 import "./Services.css";
 
+const FeelingList=[
+  {
+    name: "분노",
+    info: "무엇이 당신에게 분노를 느끼게 했나요?\n스스로에게 위로와 격려의 말을 건네봅시다."
+  },
+  {
+      name: "기쁨",
+      info: "무엇이 당신을 기쁘게 느끼게 했나요?\n오늘도 수고한 스스로에게 한마디 건네봅시다."
+  },
+  {
+      name: "불안",
+      info: "무엇이 당신을 불안하게 했나요?\n스스로에게 위로와 격려의 말을 건네봅시다."
+  },
+  {
+      name: "당황",
+      info: "무엇이 당신을 당황스럽게 했나요?\n스스로에게 위로와 격려의 말을 건네봅시다."
+  },
+  {
+      name: "슬픔",
+      info: "무엇이 당신을 슬프게 했나요?\n스스로에게 위로와 격려의 말을 건네봅시다."
+  },
+  {
+      name: "상처",
+      info: "무엇이 당신을 상처받게 했나요?\n스스로에게 위로와 격려의 말을 건네봅시다."
+  }
+];
+
+function Feelings(props){
+  const foundInfo = FeelingList.find((item) => item.name === props.name);
+  return (
+    <div className="result">
+      {/*감정분석 결과*/}
+      당신은 <span className="fw-boldline">{props.name}</span>을(를) 느끼고있습니다.<br />
+      <p>
+        {foundInfo.info.split('\n').map((line,index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+        ))}
+      </p>
+    </div>
+  );
+};
 const Services = (e) => {
   /*달력*/
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -92,15 +135,7 @@ const Services = (e) => {
           <div className="result-content">
             {contentVisible && (
               <div>
-                <div className="result">
-                  {/*감정분석 결과*/}
-                  당신은 <span className="fw-boldline">두려움</span>을(를) 느끼고
-                  있습니다.
-                  <br />
-                  무엇이 당신에게 두려움을(를) 느끼게 했나요?
-                  <br />
-                  스스로에게 위로와 격려의 말을 건네봅시다
-                </div>
+                <Feelings name="분노"/>
                 <br />
                 <div className="letter">
                   <textarea

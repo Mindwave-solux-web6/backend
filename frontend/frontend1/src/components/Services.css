@@ -264,7 +264,9 @@ background-color: #e6e6e6;
 }
 
 .divide{
+  flex:3;
   padding: 0 20px 0 20px;
+  text-align:center
 }
 
 .diary-calendar{

@@ -53,21 +53,25 @@ const infoList = [
 
 function TestResult(props){
     const foundInfo = infoList.find((item) => item.name === props.name);
-    return (
-        <div className="divide">
-            {props.name}<br/>
-        <hr className="sign-desc-light" />
-            <p>
-                {foundInfo.info.split('\n').map((line,index) => (
-                <React.Fragment key={index}>
-                    {line}
-                    <br />
-                </React.Fragment>
-                ))}
-            </p>
-        </div>
-    );
-
+    if(foundInfo){
+        return (
+            <div className="divide">
+                {props.name}<br/>
+            <hr className="sign-desc-light" />
+                <p>
+                    {foundInfo.info.split('\n').map((line,index) => (
+                    <React.Fragment key={index}>
+                        {line}
+                        <br />
+                    </React.Fragment>
+                    ))}
+                </p>
+            </div>
+        );
+    } else {
+        //진단 결과가 3개 이하인 경우에는...?
+        return 'NULL';
+    }
 };
 
 function MyPage(){
@@ -91,9 +95,10 @@ function MyPage(){
                         <h2>지금 당신이 걸려있는 덫은?</h2>
                         <br/>
                         <div className="testresultcontent">
+                            {/* 진단 후 덫에 안걸린 경우와 아직 진단을 받지 않은 경우도 존재*/}
                             <TestResult name="버림받음의 덫"/>
                             <TestResult name="의존의 덫"/>
-                            <TestResult name="실패의 덫"/>
+                            <TestResult name="불신과 학대의 덫"/>
                         </div>
                     </div>
 

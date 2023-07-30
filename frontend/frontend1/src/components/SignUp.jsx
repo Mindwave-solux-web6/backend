@@ -80,10 +80,10 @@ const SignUp = () => {
           );
 
           // 서버에서 온 응답 처리
-          console.log("회원가입 성공!", response.data);
+          console.log("회원가입 성공!", response);
           // 여기서 성공 시의 처리를 추가하거나, 다른 페이지로 이동시킬 수 있습니다.
         } catch (error) {
-          console.error("회원가입 실패!", error.response.data);
+          console.error("회원가입 실패!", error.response);
           // 여기서 에러 시의 처리를 추가하거나, 에러 메시지를 보여줄 수 있습니다.
         }
       }

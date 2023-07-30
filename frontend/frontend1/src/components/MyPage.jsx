@@ -1,7 +1,74 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import Calendar from 'react-calendar';
 import './Services.css';
 import "./MyPage.css";
+
+const infoList = [
+    {
+        name: "버림받음의 덫",
+        info: "사랑하는 사람이 자신을 떠나고,\n 자신은 영원히 정서적으로 고립되어\n 살게 될 것이라는 느낌에 \n사로잡혀있음을 의미합니다."
+    },
+    {
+        name: "불신과 학대의 덫",
+        info: "다른 사람들이 어떤 방법으로든\n 자신을 헤치거나 학대할 것이라는 예상에\n 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "취약성의 덫",
+        info: "재앙, 즉 자연재해, 범죄, 질병, 경제적 파산 등이\n 닥칠 거라는 두려움 속에 사는 것을 의미합니다."
+    },
+    {
+        name: "의존의 덫",
+        info: "자신은 다른 사람의 세심함 도움 없이는\n 일상생활을 제대로 할 수 없다는 느낌에\n 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "정서적 결핍의 덫",
+        info: "사랑받고자 하는 자신의 욕구가\n 절대로 타인에 의해 적절하게 충족되지 못할 것이라는\n 믿음에 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "사회적 소외의 덫",
+        info: "친구와의 집단과의 관계를 포함하여,\n 세상과 격리된 느낌 혹은 남들과 다르다는\n 느낌에 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "결함의 덫",
+        info: "내적으로 부족하고 결함이 있다고 느끼며,\n 누군가 자신의 참모습을 알게 되면,\n 자신은 사랑받을 수 없게 될 것이라고 믿는 것을 의미합니다."
+    },
+    {
+        name: "실패의 덫",
+        info: `성취해야 할 분야에서\n자신은 부적합하다는 믿음에\n 사로잡혀 있음을 의미합니다. `
+    },
+    {
+        name: "복종의 덫",
+        info: "다른 이들을 기쁘게 하거나\n 그들의 욕구를 만족시키기 위해\n 자신의 욕구와 욕망을 희생하는 것에\n 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "엄격한 기준의 덫",
+        info: "스스로 설정해 놓은\n 지나치게 극단적으로 높은 기준에 맞추기 위해\n 가혹하게 노력하는 것에 사로잡혀 있음을 의미합니다."
+    },
+    {
+        name: "특권 의식의 덫",
+        info: "무언갈 얻기 위해\n 다른 사람들이 고려하는 합리성,\n 실현 가능성, 시간, 인내심, 치러야 할 대가 등을\n 무시하는 것을 의미합니다."
+    }
+];
+
+
+function TestResult(props){
+    const foundInfo = infoList.find((item) => item.name === props.name);
+    return (
+        <div className="divide">
+            {props.name}<br/>
+        <hr className="sign-desc-light" />
+            <p>
+                {foundInfo.info.split('\n').map((line,index) => (
+                <React.Fragment key={index}>
+                    {line}
+                    <br />
+                </React.Fragment>
+                ))}
+            </p>
+        </div>
+    );
+
+};
 
 function MyPage(){
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -24,39 +91,9 @@ function MyPage(){
                         <h2>지금 당신이 걸려있는 덫은?</h2>
                         <br/>
                         <div className="testresultcontent">
-                                <div className="divide">
-                                    버림받음의 덫<br/>
-                                    <hr className="sign-desc-light" />
-                                    <p>
-                                        버림받음의 덫은<br/>
-                                        사랑하는 사람이 자신을 떠나고,<br/>
-                                        자신은 영원히 정서적으로 고립되어<br/> 
-                                        살게 될 것이라는 느낌에 사로잡혀 있음을<br/> 
-                                        의미합니다.
-                                    </p>
-                                </div>
-                                <div className="divide">
-                                    버림받음의 덫<br/>
-                                    <hr className="sign-desc-light" />
-                                    <p>
-                                        버림받음의 덫은<br/>
-                                        사랑하는 사람이 자신을 떠나고,<br/>
-                                        자신은 영원히 정서적으로 고립되어<br/> 
-                                        살게 될 것이라는 느낌에 사로잡혀 있음을<br/> 
-                                        의미합니다.
-                                    </p>
-                                </div>
-                                <div className="divide">
-                                    버림받음의 덫<br/>
-                                    <hr className="sign-desc-light" />
-                                    <p>
-                                        버림받음의 덫은<br/>
-                                        사랑하는 사람이 자신을 떠나고,<br/>
-                                        자신은 영원히 정서적으로 고립되어<br/> 
-                                        살게 될 것이라는 느낌에 사로잡혀 있음을<br/> 
-                                        의미합니다.
-                                    </p>
-                                </div>
+                            <TestResult name="버림받음의 덫"/>
+                            <TestResult name="의존의 덫"/>
+                            <TestResult name="실패의 덫"/>
                         </div>
                     </div>
 

@@ -221,7 +221,7 @@ const Creative = () => {
                   <p className="text-muted">
                     친구와의 집단과의 관계를 포함하여,
                     <br />
-                    세상과 격리된 느낌, 남들과 다르다느 느낌
+                    세상과 격리된 느낌, 남들과 다르다고 느낌
                   </p>
                 </div>
               </div>

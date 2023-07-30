@@ -106,7 +106,7 @@ const SignUp = () => {
     // }
   };
   return (
-    <header className="masthead">
+    <header className="masthead" style={{ height: "60%" }}>
       <section id="signup" className="mt-7">
         <hr className="sign-divider-light" />
         <h2 className="text-center mt-0 text-white">Sign Up</h2>

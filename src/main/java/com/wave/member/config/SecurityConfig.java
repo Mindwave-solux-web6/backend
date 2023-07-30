@@ -36,13 +36,14 @@ public class SecurityConfig {
 
    @Bean
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http
+    http.cors().and() // 추가값: cors() 처리를 http 설정에 추가합니다
         .httpBasic().disable() // Disable basic settings considering only rest api
         .csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Do not use session as token based authentication
         .and()
         .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class) // Put JwtAuthenticationFilter before UsernamePasswordAuthenticationFilter
-        .authorizeRequests() // Check permissions on requests
+            .authorizeRequests() // Check permissions on requests
+        
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/api/post/**").authenticated()
         .anyRequest().permitAll(); // other requests can be accessed by anyone

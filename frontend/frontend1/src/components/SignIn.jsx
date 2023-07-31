@@ -1,36 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-// const SignIn = () => {
-//   const [id, setId] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleSignUp = () => {
-//     console.log('회원가입 정보:');
-//     console.log('아이디:', id);
-//     console.log('비밀번호:', password);
-//   }
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigator = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     try {
       const result = await axios.post(
-        "http://localhost:8080/api/members/login",
+        "http://127.0.0.1:8080/api/members/login",
         {
           email: email,
           password: password,
         }
       );
-      console.log("회원가입 결과:", result);
+      console.log("로그인 성공!:", result);
+      if (result.status === 200) {
+        localStorage.setItem("isLoggedIn", "true");
+        setEmail("");
+        setPassword("");
+        navigator("/");
+      }
     } catch (error) {
-      console.error("회원가입 에러:", error);
+      console.error("로그인 실패!:", error);
     }
   };
 

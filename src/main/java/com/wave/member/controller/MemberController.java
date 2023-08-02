@@ -70,7 +70,7 @@ public class MemberController {
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:http://127.0.0.1:3000/";
+        return "redirect:http://127.0.0.1:8080/";
     }
 
 }

@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -46,7 +47,11 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/api/post/**").authenticated()
-        .anyRequest().permitAll(); // other requests can be accessed by anyone
+        .anyRequest().permitAll() // other requests can be accessed by anyone
+            .and()
+            .logout()
+            .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
+            .invalidateHttpSession(true); // 로그아웃 이후 세션 전체 삭제 여부
 
     return http.build();
 }

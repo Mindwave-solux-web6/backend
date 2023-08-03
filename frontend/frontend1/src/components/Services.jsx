@@ -113,14 +113,15 @@ const Services = (e) => {
         content: letterContent,
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
+        // 상태 값을 200에서 201로 변경
         console.log("편지가 성공적으로 전송되었습니다.", response);
-        alert("전송이 완료되었습니다.")
+        alert("전송이 완료되었습니다.");
         setTitle(""); // 제목 초기화
         setContent(""); // 내용 초기화
         setLetterContent(""); // 내용 초기화
       } else {
-        console.log("전송에 실패했습니다.",response);
+        console.log("전송에 실패했습니다.", response);
       }
     } catch (error) {
       alert("전송 중 오류가 발생했습니다.");

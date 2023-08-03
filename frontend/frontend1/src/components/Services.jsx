@@ -62,6 +62,7 @@ const Services = (e) => {
   const [writer, setWriter] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [letterContent, setLetterContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,9 +78,7 @@ const Services = (e) => {
       );
 
       if (response.status === 200) {
-        console.log("일기가 성공적으로 전송되었습니다.",response);
-        setTitle(""); // 제목 초기화
-        setContent(""); // 내용 초기화
+        console.log("일기가 성공적으로 작성되었습니다.", response);
       } else {
         console.log("전송에 실패했습니다.");
       }
@@ -104,6 +103,28 @@ const Services = (e) => {
   const handleContentClick = () => {
     setButtonVisible(true);
     setContentVisible(false);
+  };
+
+  const handleLetterSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8080/api/letter", {
+        content: letterContent,
+      });
+
+      if (response.status === 200) {
+        console.log("편지가 성공적으로 전송되었습니다.", response);
+        alert("전송이 완료되었습니다.")
+        setTitle(""); // 제목 초기화
+        setContent(""); // 내용 초기화
+        setLetterContent(""); // 내용 초기화
+      } else {
+        console.log("전송에 실패했습니다.",response);
+      }
+    } catch (error) {
+      alert("전송 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -169,16 +190,20 @@ const Services = (e) => {
               <div>
                 <Feelings name="분노" />
                 <br />
+
                 <div className="letter">
                   <textarea
                     name="resultcontent"
                     placeholder="스스로에게 하고 싶은 말을 작성해봅시다."
+                    value={letterContent}
+                    onChange={(e) => setLetterContent(e.target.value)}
                     className="write wb-4"
                   />
                   <br />
                 </div>
-                <a href="/Services">
+                <form onSubmit={handleLetterSubmit}>
                   <button
+                    type="submit"
                     className="btn btn-primary btn-xl "
                     style={{
                       height: "90px",
@@ -190,11 +215,10 @@ const Services = (e) => {
                       width: "25%",
                       display: "block" /* block 속성으로 변경 */,
                     }}
-                    onClick={handleContentClick}
                   >
                     나에게 편지 보내기
                   </button>
-                </a>
+                </form>
               </div>
             )}
             ;

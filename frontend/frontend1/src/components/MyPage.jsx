@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 import './Services.css';
 import "./MyPage.css";
+import axios from "axios";
 
 const infoList = [
     {
@@ -74,6 +75,7 @@ function TestResult(props){
     }
 };
 
+
 function MyPage(){
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = (date) => {
@@ -83,6 +85,47 @@ function MyPage(){
     const tileDisabled = ({ activeStartDate, date, view }) => {
         return date > today;
     };
+
+    const [value, setValue] = useState(new Date());
+    const [selectedData, setSelectedData] = useState({
+        diaryTitle: "",
+        diaryContent: "",
+        letterContent: "",
+    });
+    
+
+    const fetchData = async (dateString) => {
+        try {
+        const diaryResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/diary?date=${dateString}`);
+        const letterResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/letter?date=${dateString}`);
+
+        setSelectedData({
+            diaryTitle: diaryResponse.data.title,
+            diaryContent: diaryResponse.data.content,
+            letterContent: letterResponse.data.content,
+        });
+        console.log("전송 완료",dateString,diaryResponse,letterResponse);
+
+        } catch (error) {
+        if (error.response.status === 404) { 
+            setSelectedData({
+                diaryTitle: "일기가 없습니다.",
+                diaryContent: "일기가 없습니다.일기를 작성해주세요.",
+                letterContent: "편지가 없습니다.편지를 작성해주세요.",
+            });
+          }
+        console.error("전송실패", error);
+        }
+    };
+
+    const onDateClick = (selectedDate) => {
+        setValue(selectedDate);
+        const adjustedDate = new Date(selectedDate);
+        adjustedDate.setDate(adjustedDate.getDate() + 1);
+        const dateString = adjustedDate.toISOString().split("T")[0];
+        fetchData(dateString);
+    };
+
     return(
         <>
         <header className="masthead" style={{ height: "60%" }}>
@@ -111,9 +154,10 @@ function MyPage(){
                         <div className="my-5 mcontainercontent d-flex align-items-center justify-content-center ">
                         <Calendar
                             onChange={handleDateChange}
-                            value={selectedDate}
+                            value={value}
                             tileDisabled={tileDisabled}
                             className="react-calendar"
+                            onClickDay={onDateClick}
                         />
                         </div>
                     </div>
@@ -122,8 +166,8 @@ function MyPage(){
                         {/* 일기 다시 보기 */}
                         <div className="show-d">
                             <div className="date">{selectedDate.toDateString()}</div>
-                            <div className="showcontent mb-2">일기 제목이 표시됩니다.</div>
-                            <div className="showcontent">일기 내용이 표시됩니다.</div>
+                            <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>
+                            <div className="showcontent">{selectedData.diaryContent}</div>
                             <div className='b3'>
                                 <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
                                 <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>
@@ -134,7 +178,7 @@ function MyPage(){
                         {/* 성찰 다시 보기 */}
                         <div className="show-d">
                             <div className="date">{selectedDate.toDateString()}</div>
-                            <div className="showcontent">성찰 / 편지 내용이 표시됩니다.</div>
+                            <div className="showcontent">{selectedData.letterContent}</div>
                             <div className='b3'>
                                 <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
                                 <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>

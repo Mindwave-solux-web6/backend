@@ -96,8 +96,8 @@ function MyPage(){
 
     const fetchData = async (dateString) => {
         try {
-        const diaryResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/diary?date=${dateString}`);
-        const letterResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/letter?date=${dateString}`);
+        const diaryResponse = await axios.get(`http://127.0.0.1:8080/api/diary-and-letter/diary?date=${dateString}`);
+        const letterResponse = await axios.get(`http://127.0.0.1:8080/api/diary-and-letter/letter?date=${dateString}`);
 
         setSelectedData({
             diaryTitle: diaryResponse.data.title,
@@ -118,6 +118,32 @@ function MyPage(){
         }
     };
 
+    const handleSaveDiaryChanges = async () => {
+        try {
+            await axios.put(`http://127.0.0.1:8080/api/diary/post/{id}`, {
+                newDiaryContent: selectedData.diaryContent,
+            });
+
+            console.log("수정 완료");
+
+        } catch (error) {
+            console.error("수정 실패", error);
+        }
+    };
+
+    const handleSaveLetterChanges = async () => {
+        try {
+            dateString,
+            await axios.put(`http://127.0.0.1:8080/api/letter/{id}`, {
+                newLetterContent: selectedData.letterContent,
+            });
+
+            console.log("수정 완료");
+
+        } catch (error) {
+            console.error("수정 실패", error);
+        }
+    };
     const onDateClick = (selectedDate) => {
         setValue(selectedDate);
         const adjustedDate = new Date(selectedDate);
@@ -169,8 +195,7 @@ function MyPage(){
                             <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>
                             <div className="showcontent">{selectedData.diaryContent}</div>
                             <div className='b3'>
-                                <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
-                                <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' onClick={handleSaveDiaryChanges}>수정</button>
                                 <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
                         </div>
@@ -180,8 +205,7 @@ function MyPage(){
                             <div className="date">{selectedDate.toDateString()}</div>
                             <div className="showcontent">{selectedData.letterContent}</div>
                             <div className='b3'>
-                                <button className='btn btn-secondary btn-xl2 m-2' id="edit" type='submit'>수정</button>
-                                <button className='btn btn-primary btn-xl2 m-2' id="save" type='submit'>저장</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' onClick={handleSaveLetterChanges}>수정</button>
                                 <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
                         </div>

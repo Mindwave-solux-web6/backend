@@ -30,6 +30,7 @@ const SignIn = () => {
       }
     } catch (error) {
       console.error("로그인 실패!:", error);
+      alert("로그인 실패");
     }
   };
 

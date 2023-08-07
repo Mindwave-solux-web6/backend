@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import ReactDOM, { createRoot } from "react-dom/client";
 import image from "../asset/body.png";
@@ -253,47 +254,58 @@ const qnaList = [
 
 const infoList = [
   {
-    name: "제발 나를 떠나지 마세요 < 버림받음의 덫 > ",
+    prev: "제발 나를 떠나지 마세요",
+    name: "버림받음의 덫",
     desc: "당신은 지금 사랑하는 사람이 자신을 떠나고, 자신은 영원히 정서적으로 고립되어 살게 될 것이라고 느끼고 있군요.",
   },
   {
-    name: "당신을 믿을 수 없어 < 불신과 학대의 덫 > ",
+    prev: "당신을 믿을 수 없어",
+    name: "불신과 학대의 덫",
     desc: "당신은 지금 다른 사람들이 어떤 방법으로든 자신을 헤치거나 학대할 것이라고 예상하고 있군요.",
   },
   {
-    name: "언제 재난이 닥칠 지 몰라 < 취약성의 덫 > ",
+    prev: "언제 재난이 닥칠 지 몰라",
+    name: "취약성의 덫",
     desc: "당신은 지금 자연재해, 범죄, 질병 경제적 파산 등이 닥칠 것이라는 두려움 속에 살고 있군요.",
   },
   {
-    name: "나 혼자서는 해낼 수 없어 < 의존의 덫 >  ",
+    prev: "나 혼자서는 해낼 수 없어",
+    name: "의존의 덫",
     desc: "당신은 지금 다른 사람의 세심한 도움 없이는 제대로 된 일상생활이 불가능하여 지속적인 지원을 원하고 있군요.",
   },
   {
-    name: "나는 결코 사랑받을 수 없을거야 < 정서적 결핍의 덫 >",
+    prev: "나는 결코 사랑받을 수 없을거야",
+    name: "정서적 결핍의 덫",
     desc: "당신은 지금 자신의 사랑하고자하는 욕구가 절대로 타인에 의해 적절하게 충족되지 못할 것이라고 믿고 있군요.",
   },
   {
-    name: "나는 적합하지가 않아 < 사회적 소외의 덫 >",
+    prev: "나는 적합하지가 않아",
+    name: "사회적 소외의 덫",
     desc: "당신은 지금 친구들과 집단의 관계에서 세상과 격리된, 남들과는 다르다는 느낌을 받고 있군요.",
   },
   {
-    name: "나는 쓸모 없는 사람이야 < 결함의 덫 > ",
+    prev: "나는 쓸모 없는 사람이야",
+    name: "결함의 덫",
     desc: "당신은 지금 내적으로 부족하고 결함이 있어서 자신은 근본적으로 사랑받을 수 없다고 믿고 있군요.",
   },
   {
-    name: "난 실패자인것 같아 < 실패의 덫 > ",
+    prev: "난 실패자인것 같아",
+    name: "실패의 덫",
     desc: "당신은 학교, 직장, 운동 등 성취해야할 분야에서 자신은 부적합하다고 믿고 있군요.",
   },
   {
-    name: "당신이 원하는 대로 할게요 < 복종의 덫 > ",
+    prev: "당신이 원하는 대로 할게요",
+    name: "복종의 덫",
     desc: "당신은 지금 다른 이들을 기쁘게 하거나 그들의 욕구를 만족시키기 위해 자신의 욕구와 욕망을 희생하고 있군요.",
   },
   {
-    name: "아직 많이 부족해 < 엄격한 기준의 덫 > ",
+    prev: "아직 많이 부족해",
+    name: "엄격한 기준의 덫",
     desc: "당신은 지금 스스로가 정해놓은 지나치게 극단적으로 높은 기준에 맞추기 위해 가혹하게 노력하고 있군요.",
   },
   {
-    name: "내가 원하는 건 뭐든지 다 가질 수 있어 < 특권 의식의 덫 > ",
+    prev: "내가 원하는 건 뭐든지 다 가질 수 있어",
+    name: "특권 의식의 덫",
     desc: "당신은 지금 다른 이들이 고려하는 합리성, 실현가능성, 인내심 등을 모두 무시하고 자신이 특별하다고 느끼고 있군요.",
   },
 ];
@@ -460,7 +472,7 @@ const QnaComponent = () => {
 
       if (n > len) {
         throw new RangeError(
-          "getRandomIndices: more elements taken than available"
+          console.log("getRandomIndices: more elements taken than available",n,len)
         );
       }
 
@@ -474,11 +486,32 @@ const QnaComponent = () => {
 
     const randomResult = getRandomIndices(maxIndices, 3);
     console.log("result", randomResult);
+    
     return randomResult;
+  };
+  
+  const sendResultToServer = async (resultIndices) => {
+    const resultNames = resultIndices.map((index) => infoList[index].name);
+    const trap_1=resultNames[0];
+    const trap_2=resultNames[1];
+    const trap_3=resultNames[2];
+    
+    try {
+      const response = await axios.post("http://127.0.0.1:8080/api/test",
+      { 
+        trap_1,
+        trap_2,
+        trap_3
+      });
+      console.log("덫 결과 전송 완료", response,trap_1,trap_2,trap_3);
+    } catch (error) {
+      console.error("덫 결과 전송 오류", error);
+    }
   };
 
   const setResult = () => {
     const points = calResult();
+    sendResultToServer(points);
     const resultContainer = document.querySelector("#result");
     resultContainer.innerHTML = ""; // 기존 결과를 비웁니다.
 
@@ -486,8 +519,12 @@ const QnaComponent = () => {
       if (infoList[point]) {
         const resultSection = document.createElement("div");
 
+        const resultPrev = document.createElement("div");
+        resultPrev.innerHTML = infoList[point].prev;
+        resultSection.appendChild(resultPrev);
+
         const resultName = document.createElement("h3");
-        resultName.innerHTML = infoList[point].name;
+        resultName.innerHTML = `&lt;${infoList[point].name}&gt;`;
         resultSection.appendChild(resultName);
 
         // const resultImg = document.createElement("img");

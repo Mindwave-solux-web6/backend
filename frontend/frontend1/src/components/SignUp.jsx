@@ -81,6 +81,12 @@ const SignUp = () => {
 
           // 서버에서 온 응답 처리
           console.log("회원가입 성공!", response);
+          alert("회원가입이 완료되었습니다.");
+          setEmail("");
+          setName("");
+          setNickname("");
+          setPassword("");
+          setConfirmPassword("");
           // 여기서 성공 시의 처리를 추가하거나, 다른 페이지로 이동시킬 수 있습니다.
         } catch (error) {
           console.error("회원가입 실패!", error.response);

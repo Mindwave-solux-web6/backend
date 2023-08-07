@@ -7,7 +7,7 @@ import axios from "axios";
 const infoList = [
     {
         name: "버림받음의 덫",
-        info: "사랑하는 사람이 자신을 떠나고,\n 자신은 영원히 정서적으로 고립되어\n 살게 될 것이라는 느낌에 \n사로잡혀있음을 의미합니다."
+        info: "사랑하는 사람이 자신을 떠나고,\n 자신은 영원히 정서적으로 고립되어 살게 될 것이라는 느낌에 \n사로잡혀있음을 의미합니다."
     },
     {
         name: "불신과 학대의 덫",
@@ -69,10 +69,7 @@ function TestResult(props){
                 </p>
             </div>
         );
-    } else {
-        //진단 결과가 3개 이하인 경우에는...?
-        return 'NULL';
-    }
+    } 
 };
 
 
@@ -80,20 +77,20 @@ function MyPage(){
     const [trapResults, setTrapResults] = useState([]);
     const fetchTrapResults = async () => {
         try {
-        const response = await axios.get(
-            "http://127.0.0.1:8080/api/test/1"
-        );
-        const results = response.data.results;
-        setTrapResults(results);
-        } catch (error) {
-        console.error("덫 결과를 가져오는데 실패했습니다:", error);
-        }
+            const response = await axios.get(
+                "http://127.0.0.1:8080/api/test/1"
+            );
+            const results = response.data;
+            setTrapResults(results);
+            console.log("실행은 했다 오버",results);
+            } catch (error) {
+            console.error("덫 결과를 가져오는데 실패했습니다:", error);
+            }
     };
 
     useEffect(() => {
         fetchTrapResults();
     }, []);
-
 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = (date) => {
@@ -183,8 +180,10 @@ function MyPage(){
                         <br/>
                         <div className="testresultcontent">
                             {/* 진단 후 덫에 안걸린 경우와 아직 진단을 받지 않은 경우도 존재*/}
-                            {trapResults && trapResults.map((trapResult) => (
-                                <TestResult key={trapResult.id} name={trapResult.name} />
+                            {trapResults && Object.values(trapResults).map((trapResult, index) => (
+                                <div key={`trap_${ + 1}`} >
+                                    <TestResult name={trapResult}/>
+                                </div>
                             ))}
                         </div>
                     </div>

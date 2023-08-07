@@ -74,19 +74,61 @@ function TestResult(props){
 
 
 function MyPage(){
+    const fetchTableData = async () => {
+        try {
+          const response = await axios.get('http://localhost:8080/api/test');
+          const count = response.data.length;
+          console.log("테이블 개수를 구하기 위한 첫걸음", count);
+          return count;
+        } catch (error) {
+          console.error('테이블의 총 개수를 가져오는데 실패했습니다:', error);
+          return null;
+        }
+      };
+      
+
+    // const fetchTableData = async () => {
+    //     try {
+    //       const response = await axios.get('http://localhost:8080/api/test');
+    //       const count = response.data.length;
+    //       console.log("테이블 개수를 구하기 위한 첫걸음",count);
+    //       totalCount = count;
+    //     } catch (error) {
+    //       console.error('테이블의 총 개수를 가져오는데 실패했습니다:', error);
+    //     }
+    // };
     const [trapResults, setTrapResults] = useState([]);
     const fetchTrapResults = async () => {
-        try {
+        const totalCount = await fetchTableData();
+        if (totalCount !== null) {
+          try {
             const response = await axios.get(
-                "http://127.0.0.1:8080/api/test/1"
+                `http://127.0.0.1:8080/api/test/${totalCount}`
             );
             const results = response.data;
             setTrapResults(results);
-            console.log("실행은 했다 오버",results);
+            console.log("실행은 했다 오버", results);
             } catch (error) {
-            console.error("덫 결과를 가져오는데 실패했습니다:", error);
+                console.error("덫 결과를 가져오는데 실패했습니다:", error);
             }
+        } else {
+          console.error("totalCount 값이 없습니다");
+        }
     };
+      
+    // const fetchTrapResults = async () => {
+    //     fetchTableData();
+    //     try {
+    //         const response = await axios.get(
+    //             `http://127.0.0.1:8080/api/test/{id}`
+    //         );
+    //         const results = response.data;
+    //         setTrapResults(results);
+    //         console.log("실행은 했다 오버",results);
+    //         } catch (error) {
+    //         console.error("덫 결과를 가져오는데 실패했습니다:", error);
+    //         }
+    // };
 
     useEffect(() => {
         fetchTrapResults();
@@ -133,7 +175,7 @@ function MyPage(){
         }
     };
 
-    const handleSaveDiaryChanges = async () => {
+    /*const handleSaveDiaryChanges = async () => {
         try {
             await axios.put(`http://127.0.0.1:8080/api/diary/post/{id}`, {
                 newDiaryContent: selectedData.diaryContent,
@@ -158,7 +200,7 @@ function MyPage(){
         } catch (error) {
             console.error("수정 실패", error);
         }
-    };
+    };*/
     const onDateClick = (selectedDate) => {
         setValue(selectedDate);
         const adjustedDate = new Date(selectedDate);
@@ -212,7 +254,7 @@ function MyPage(){
                             <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>
                             <div className="showcontent">{selectedData.diaryContent}</div>
                             <div className='b3'>
-                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' onClick={handleSaveDiaryChanges}>수정</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' /*onClick={handleSaveDiaryChanges}*/>수정</button>
                                 <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
                         </div>
@@ -222,7 +264,7 @@ function MyPage(){
                             <div className="date">{selectedDate.toDateString()}</div>
                             <div className="showcontent">{selectedData.letterContent}</div>
                             <div className='b3'>
-                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' onClick={handleSaveLetterChanges}>수정</button>
+                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' /*onClick={handleSaveLetterChanges}*/>수정</button>
                                 <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
                             </div>
                         </div>

@@ -486,7 +486,7 @@ const QnaComponent = () => {
 
     const randomResult = getRandomIndices(maxIndices, 3);
     console.log("result", randomResult);
-    
+
     return randomResult;
   };
   

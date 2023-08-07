@@ -11,7 +11,7 @@ const infoList = [
     },
     {
         name: "불신과 학대의 덫",
-        info: "다른 사람들이 어떤 방법으로든\n 자신을 헤치거나 학대할 것이라는 예상에\n 사로잡혀 있음을 의미합니다."
+        info: "다른 사람들이 어떤 방법으로든 자신을 헤치거나\n 학대할 것이라는 예상에\n 사로잡혀 있음을 의미합니다."
     },
     {
         name: "취약성의 덫",
@@ -27,7 +27,7 @@ const infoList = [
     },
     {
         name: "사회적 소외의 덫",
-        info: "친구와의 집단과의 관계를 포함하여,\n 세상과 격리된 느낌 혹은 남들과 다르다는\n 느낌에 사로잡혀 있음을 의미합니다."
+        info: "친구와의 집단과의 관계를 포함하여,\n 세상과 격리된 느낌\n 혹은 남들과 다르다는 느낌에 사로잡혀 있음을 의미합니다."
     },
     {
         name: "결함의 덫",
@@ -72,21 +72,64 @@ function TestResult(props){
     } 
 };
 
-
+let totalCount = 1;
 function MyPage(){
+    const fetchTableData = async () => {
+        try {
+          const response = await axios.get('http://localhost:8080/api/test');
+          const count = response.data.length;
+          console.log("테이블 개수를 구하기 위한 첫걸음", count);
+          return count;
+        } catch (error) {
+          console.error('테이블의 총 개수를 가져오는데 실패했습니다:', error);
+          return null;
+        }
+      };
+      
+
+    // const fetchTableData = async () => {
+    //     try {
+    //       const response = await axios.get('http://localhost:8080/api/test');
+    //       const count = response.data.length;
+    //       console.log("테이블 개수를 구하기 위한 첫걸음",count);
+    //       totalCount = count;
+    //     } catch (error) {
+    //       console.error('테이블의 총 개수를 가져오는데 실패했습니다:', error);
+    //     }
+    // };
+    
     const [trapResults, setTrapResults] = useState([]);
     const fetchTrapResults = async () => {
-        try {
+        const totalCount = await fetchTableData();
+        if (totalCount !== null) {
+          try {
             const response = await axios.get(
-                "http://127.0.0.1:8080/api/test/1"
+              `http://127.0.0.1:8080/api/test/${totalCount}`
             );
             const results = response.data;
             setTrapResults(results);
-            console.log("실행은 했다 오버",results);
-            } catch (error) {
+            console.log("실행은 했다 오버", results);
+          } catch (error) {
             console.error("덫 결과를 가져오는데 실패했습니다:", error);
-            }
-    };
+          }
+        } else {
+          console.error("totalCount 값이 없습니다");
+        }
+      };
+      
+    // const fetchTrapResults = async () => {
+    //     fetchTableData();
+    //     try {
+    //         const response = await axios.get(
+    //             `http://127.0.0.1:8080/api/test/{id}`
+    //         );
+    //         const results = response.data;
+    //         setTrapResults(results);
+    //         console.log("실행은 했다 오버",results);
+    //         } catch (error) {
+    //         console.error("덫 결과를 가져오는데 실패했습니다:", error);
+    //         }
+    // };
 
     useEffect(() => {
         fetchTrapResults();

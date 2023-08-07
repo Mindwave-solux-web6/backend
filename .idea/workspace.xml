@@ -5,26 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcfbd4e1-4b58-4fe3-8e30-7c4cf5f16592" name="Changes" comment="편지">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/DiaryAndLetterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/controller/LetterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/domain/LetterEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/dto/LetterDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/repository/LetterRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wave/letter/service/LetterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend1/src/components/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/src/components/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/BaseTimeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/BaseTimeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/domain/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/domain/BoardEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/dto/BoardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/dto/BoardDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/repository/BoardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wave/diary/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wave/diary/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/BaseTimeEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/BaseTimeEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/domain/BoardEntity$BoardEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/domain/BoardEntity$BoardEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/domain/BoardEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/domain/BoardEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/dto/BoardDto$BoardDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/dto/BoardDto$BoardDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/dto/BoardDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/dto/BoardDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/repository/BoardRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/repository/BoardRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/service/BoardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/diary/service/BoardService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/wave/member/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/wave/member/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend1/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +149,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberServiceTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -169,6 +173,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -192,6 +197,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberServiceTest.createMember" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -215,6 +221,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -314,27 +321,6 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="jewoo" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -356,6 +342,27 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="jewoo" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

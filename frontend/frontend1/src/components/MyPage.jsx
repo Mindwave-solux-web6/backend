@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Calendar from 'react-calendar';
 import './Services.css';
 import "./MyPage.css";
@@ -77,6 +77,24 @@ function TestResult(props){
 
 
 function MyPage(){
+    const [trapResults, setTrapResults] = useState([]);
+    const fetchTrapResults = async () => {
+        try {
+        const response = await axios.get(
+            `http://127.0.0.1:8080/api/test/1`
+        );
+        const results = response.data.results;
+        setTrapResults(results);
+        } catch (error) {
+        console.error("덫 결과를 가져오는데 실패했습니다:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchTrapResults();
+    }, []);
+
+
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -165,9 +183,9 @@ function MyPage(){
                         <br/>
                         <div className="testresultcontent">
                             {/* 진단 후 덫에 안걸린 경우와 아직 진단을 받지 않은 경우도 존재*/}
-                            <TestResult name="버림받음의 덫"/>
-                            <TestResult name="의존의 덫"/>
-                            <TestResult name="불신과 학대의 덫"/>
+                            {trapResults && trapResults.map((trapResult) => (
+                                <TestResult key={trapResult.id} name={trapResult.name} />
+                            ))}
                         </div>
                     </div>
 

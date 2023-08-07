@@ -154,8 +154,8 @@ function MyPage(){
                         <br/>
                         <div className="testresultcontent">
                             {/* 진단 후 덫에 안걸린 경우와 아직 진단을 받지 않은 경우도 존재*/}
-                            {trapResults && Object.values(trapResults).map((trapResult, index) => (
-                                <div key={`trap_${ + 1}`} >
+                            {Object.values(trapResults).map((trapResult, index) => (
+                                <div key={`trap_${ index+ 1}`} >
                                     <TestResult name={trapResult}/>
                                 </div>
                             ))}

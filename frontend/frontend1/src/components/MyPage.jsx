@@ -81,7 +81,7 @@ function MyPage(){
     const fetchTrapResults = async () => {
         try {
         const response = await axios.get(
-            `http://127.0.0.1:8080/api/test/1`
+            "http://127.0.0.1:8080/api/test/1"
         );
         const results = response.data.results;
         setTrapResults(results);

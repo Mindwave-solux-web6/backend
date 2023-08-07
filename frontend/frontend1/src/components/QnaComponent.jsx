@@ -710,7 +710,7 @@ const QnaComponent = () => {
   };
 
   return (
-    <header className="masthead" style={{ height: "60%" }}>
+    <header className="masthead">
       <div className="container px-4 px-lg-5 h-100">
         <div className="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
           {/* 초기 화면 section */}

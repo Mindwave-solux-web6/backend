@@ -41,15 +41,14 @@ public class LetterService {
                 .collect(Collectors.toList());
     }
 
-    public void updateLetter(Long id, LetterDto request) {
-        Optional<LetterEntity> optionalLetter = letterRepository.findById(id);
-        if (optionalLetter.isPresent()) {
-            LetterEntity letter = optionalLetter.get();
-            letter = LetterEntity.builder()
-                    .id(letter.getId())
+    public void updateLetter(LocalDate date, LetterDto request) {
+        LetterEntity letterEntity = letterRepository.findByCreatedDate(date); // 수정된 부분
+        if (letterEntity != null) { // 수정된 부분
+            letterEntity = LetterEntity.builder()
+                    .id(letterEntity.getId())
                     .content(request.getContent())
                     .build();
-            letterRepository.save(letter);
+            letterRepository.save(letterEntity);
         }
     }
 

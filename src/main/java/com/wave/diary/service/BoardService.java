@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -109,9 +110,24 @@ public class BoardService {
         return pageList;
     }
 
+    @Transactional
+    public BoardEntity updatePostByDate(LocalDate date, BoardDto updatedBoardDto) {
+        // date 기반으로 저장된 게시물을 가져옵니다.
+        BoardEntity boardEntity = boardRepository.findFirstByCreatedDate(date)
+                .orElseThrow(() -> new NoSuchElementException("해당 날짜에 게시물을 찾을 수 없습니다."));
+
+        // 기존의 게시물을 수정하고 새로운 BoardEntity 객체를 생성합니다.
+        BoardEntity updatedBoardEntity = BoardEntity.builder()
+                .title(updatedBoardDto.getTitle())
+                .content(updatedBoardDto.getContent())
+                .build();
+
+        // 변경된 게시물을 저장합니다.
+        return boardRepository.save(updatedBoardEntity);
+    }
+
     public BoardDto convertToDto(BoardEntity boardEntity) {
         return BoardDto.builder()
-                .id(boardEntity.getId())
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .build();

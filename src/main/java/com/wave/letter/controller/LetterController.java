@@ -3,10 +3,12 @@ package com.wave.letter.controller;
 import com.wave.letter.dto.LetterDto;
 import com.wave.letter.service.LetterService;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -14,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/letter")
 public class LetterController {
     private final LetterService letterService;
-
 
     @PostMapping
     public ResponseEntity<Long> createLetter(@RequestBody LetterDto request) {
@@ -34,9 +35,10 @@ public class LetterController {
         return ResponseEntity.ok(letters);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateLetter(@PathVariable Long id, @RequestBody LetterDto request) {
-        letterService.updateLetter(id, request);
+    @PutMapping
+    public ResponseEntity<Void> updateLetter(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                             @RequestBody LetterDto request) {
+        letterService.updateLetter(date, request);
         return ResponseEntity.noContent().build();
     }
 

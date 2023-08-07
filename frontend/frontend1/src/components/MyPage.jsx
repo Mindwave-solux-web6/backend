@@ -81,7 +81,7 @@ function MyPage(){
     const fetchTrapResults = async () => {
         try {
         const response = await axios.get(
-            `http://127.0.0.1:8080/api/test/1`
+            "http://127.0.0.1:8080/api/test/1"
         );
         const results = response.data.results;
         setTrapResults(results);
@@ -114,8 +114,8 @@ function MyPage(){
 
     const fetchData = async (dateString) => {
         try {
-        const diaryResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/diary?date=${dateString}`);
-        const letterResponse = await axios.get(`http://localhost:8080/api/diary-and-letter/letter?date=${dateString}`);
+        const diaryResponse = await axios.get(`http://127.0.0.1:8080/api/diary-and-letter/diary?date=${dateString}`);
+        const letterResponse = await axios.get(`http://127.0.0.1:8080/api/diary-and-letter/letter?date=${dateString}`);
 
         setSelectedData({
             diaryTitle: diaryResponse.data.title,

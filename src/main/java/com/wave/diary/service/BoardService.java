@@ -112,12 +112,12 @@ public class BoardService {
 
     @Transactional
     public BoardEntity updatePostByDate(LocalDate date, BoardDto updatedBoardDto) {
-        // date 기반으로 저장된 게시물을 가져옵니다.
         BoardEntity boardEntity = boardRepository.findFirstByCreatedDate(date)
                 .orElseThrow(() -> new NoSuchElementException("해당 날짜에 게시물을 찾을 수 없습니다."));
 
-        // 기존의 게시물을 수정하고 새로운 BoardEntity 객체를 생성합니다.
+        // 변경된 게시물 정보를 기반으로 BoardEntity 객체를 수정합니다.
         BoardEntity updatedBoardEntity = BoardEntity.builder()
+                .id(boardEntity.getId())
                 .title(updatedBoardDto.getTitle())
                 .content(updatedBoardDto.getContent())
                 .build();
@@ -125,7 +125,7 @@ public class BoardService {
         // 변경된 게시물을 저장합니다.
         return boardRepository.save(updatedBoardEntity);
     }
-
+    
     public BoardDto convertToDto(BoardEntity boardEntity) {
         return BoardDto.builder()
                 .title(boardEntity.getTitle())

@@ -282,11 +282,11 @@ function MyPage(){
                         <div className="date">{selectedDate.toDateString()}</div>
                         
                             {editingDiary
-                                ? <input value={newDiaryTitle} onChange={(e) => setNewDiaryTitle(e.target.value)} />
+                                ? <input className="input mb-2 " name="diarytitleedit" value={newDiaryTitle} onChange={(e) => setNewDiaryTitle(e.target.value)} />
                                 : <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>}
                                 
                             {editingDiary
-                                ? <textarea value={newDiaryContent} onChange={(e) => setNewDiaryContent(e.target.value)} />
+                                ? <textarea className="write mb-3" name="diarycontentedit" value={newDiaryContent} onChange={(e) => setNewDiaryContent(e.target.value)} />
                                 : <div className="showcontent">{selectedData.diaryContent}</div>}
                                 
                             <div className="b3">
@@ -301,7 +301,7 @@ function MyPage(){
                             <div className="date">{selectedDate.toDateString()}</div>
                             
                             {editingLetter
-                                ? <textarea value={newLetterContent} onChange={(e) => setNewLetterContent(e.target.value)} />
+                                ? <textarea className="write wb-4" name="letteredit" value={newLetterContent} onChange={(e) => setNewLetterContent(e.target.value)} />
                                 : <div className="showcontent">{selectedData.letterContent}</div>}
                                 
                             <div className="b3">

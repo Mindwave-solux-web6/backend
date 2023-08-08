@@ -292,7 +292,7 @@ function MyPage(){
                             <div className="b3">
                                 {editingDiary 
                                     ? <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={() => handleSaveDiaryChanges(selectedDate)}>저장</button>
-                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditDiary}>수정</button>}
+                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditDiary}>수정/추가</button>}
                             </div>
                         </div>
 
@@ -307,7 +307,7 @@ function MyPage(){
                             <div className="b3">
                                 {editingLetter 
                                     ? <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={() => handleSaveLetterChanges(selectedDate)}>저장</button>
-                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditLetter}>수정</button>}
+                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditLetter}>수정/추가</button>}
                             </div>
                         </div>
                     </div>

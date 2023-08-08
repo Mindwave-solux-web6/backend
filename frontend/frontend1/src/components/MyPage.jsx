@@ -76,7 +76,7 @@ function TestResult(props){
 function MyPage(){
     const fetchTableData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/api/test');
+          const response = await axios.get('http://127.0.0.1:8080/api/test');
           const count = response.data.length;
           console.log("테이블 개수를 구하기 위한 첫걸음", count);
           return count;
@@ -197,7 +197,7 @@ function MyPage(){
         date.setDate(date.getDate() + 1);
         const dateString = date.toISOString().split("T")[0];
         try {
-            await axios.put(`http://localhost:8080/api/diary/post?date=${dateString}`, {
+            await axios.put(`http://127.0.0.1:8080/api/diary/post?date=${dateString}`, {
                 title: newDiaryTitle,
                 content: newDiaryContent,
             });
@@ -215,7 +215,7 @@ function MyPage(){
         date.setDate(date.getDate() + 1);
         const dateString = date.toISOString().split("T")[0];
         try {
-            await axios.put(`http://localhost:8080/api/letter?date=${dateString}`, {
+            await axios.put(`http://127.0.0.1:8080/api/letter?date=${dateString}`, {
                 content: newLetterContent,
             });
             console.log("수정 완료");

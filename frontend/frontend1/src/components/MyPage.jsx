@@ -175,38 +175,67 @@ function MyPage(){
         }
     };
 
-    /*const handleSaveDiaryChanges = async () => {
+    const [editingDiary, setEditingDiary] = useState(false);
+    const [editingLetter, setEditingLetter] = useState(false);
+    const [newDiaryTitle, setNewDiaryTitle] = useState('');
+    const [newDiaryContent, setNewDiaryContent] = useState('');
+    const [newLetterContent, setNewLetterContent] = useState('');
+
+    const startEditDiary = () => {
+        setEditingDiary(true);
+        setNewDiaryTitle(selectedData.diaryTitle);
+        setNewDiaryContent(selectedData.diaryContent);
+      };
+      
+      const startEditLetter = () => {
+        setEditingLetter(true);
+        setNewLetterContent(selectedData.letterContent);
+      };
+
+    const handleSaveDiaryChanges = async (selectedDate) => {
+        const date = new Date(selectedDate);
+        date.setDate(date.getDate() + 1);
+        const dateString = date.toISOString().split("T")[0];
         try {
-            await axios.put(`http://127.0.0.1:8080/api/diary/post/{id}`, {
-                newDiaryContent: selectedData.diaryContent,
+            await axios.put(`http://localhost:8080/api/diary/post?date=${dateString}`, {
+                title: newDiaryTitle,
+                content: newDiaryContent,
             });
-
             console.log("수정 완료");
-
+            alert('일기가 수정되었습니다.');
+            // 페이지 리디렉션
+            onDateClick(selectedDate);
         } catch (error) {
             console.error("수정 실패", error);
         }
     };
 
-    const handleSaveLetterChanges = async () => {
+    const handleSaveLetterChanges = async (selectedDate) => {
+        const date = new Date(selectedDate);
+        date.setDate(date.getDate() + 1);
+        const dateString = date.toISOString().split("T")[0];
         try {
-            dateString,
-            await axios.put(`http://127.0.0.1:8080/api/letter/{id}`, {
-                newLetterContent: selectedData.letterContent,
+            await axios.put(`http://localhost:8080/api/letter?date=${dateString}`, {
+                content: newLetterContent,
             });
-
             console.log("수정 완료");
-
+            alert('성찰편지가 수정되었습니다.');
+            // 페이지 리디렉션
+            onDateClick(selectedDate);
         } catch (error) {
-            console.error("수정 실패", error);
+            console.error("성찰편지 수정 실패", error);
+            alert('성찰 수정에 실패했습니다. 다시 시도해주세요.');
         }
-    };*/
+    };
+
     const onDateClick = (selectedDate) => {
         setValue(selectedDate);
         const adjustedDate = new Date(selectedDate);
         adjustedDate.setDate(adjustedDate.getDate() + 1);
         const dateString = adjustedDate.toISOString().split("T")[0];
         fetchData(dateString);
+        setEditingDiary(false);
+        setEditingLetter(false);
     };
 
     return(
@@ -250,22 +279,35 @@ function MyPage(){
                     <div className='show'>
                         {/* 일기 다시 보기 */}
                         <div className="show-d">
-                            <div className="date">{selectedDate.toDateString()}</div>
-                            <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>
-                            <div className="showcontent">{selectedData.diaryContent}</div>
-                            <div className='b3'>
-                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' /*onClick={handleSaveDiaryChanges}*/>수정</button>
-                                <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
+                        <div className="date">{selectedDate.toDateString()}</div>
+                        
+                            {editingDiary
+                                ? <input value={newDiaryTitle} onChange={(e) => setNewDiaryTitle(e.target.value)} />
+                                : <div className="showcontent mb-2">제목: {selectedData.diaryTitle}</div>}
+                                
+                            {editingDiary
+                                ? <textarea value={newDiaryContent} onChange={(e) => setNewDiaryContent(e.target.value)} />
+                                : <div className="showcontent">{selectedData.diaryContent}</div>}
+                                
+                            <div className="b3">
+                                {editingDiary 
+                                    ? <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={() => handleSaveDiaryChanges(selectedDate)}>저장</button>
+                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditDiary}>수정</button>}
                             </div>
                         </div>
 
                         {/* 성찰 다시 보기 */}
                         <div className="show-d">
                             <div className="date">{selectedDate.toDateString()}</div>
-                            <div className="showcontent">{selectedData.letterContent}</div>
-                            <div className='b3'>
-                                <button className='btn btn-primary btn-xl2 m-2' id="edit" type='submit' /*onClick={handleSaveLetterChanges}*/>수정</button>
-                                <button className='btn btn-danger btn-xl2 m-2' id="delete" type='submit'>삭제</button>
+                            
+                            {editingLetter
+                                ? <textarea value={newLetterContent} onChange={(e) => setNewLetterContent(e.target.value)} />
+                                : <div className="showcontent">{selectedData.letterContent}</div>}
+                                
+                            <div className="b3">
+                                {editingLetter 
+                                    ? <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={() => handleSaveLetterChanges(selectedDate)}>저장</button>
+                                    : <button className="btn btn-primary btn-xl2 m-2" id="edit" type="submit" onClick={startEditLetter}>수정</button>}
                             </div>
                         </div>
                     </div>
